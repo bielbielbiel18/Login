@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <title>ENTRAR</title>
+</head>
+
+<body id="principal">
+
+    <div id="login">
+        <div class="caixa">
+            <!-- Logo removida -->
+            <h1>LOGIN</h1>
+
+            <div class="email">
+                <input type="email" id="email" placeholder="Email">
+            </div>
+
+            <div class="senha">
+                <input type="password" id="senha" placeholder="Senha">
+                <label for="togglePassword" id="toggleLabel">
+                    <input type="checkbox" id="togglePassword"> Mostrar senha
+                </label>
+            </div>
+
+            <div class="entrar">
+                <p>É prestador de serviços da DP World? <a href="cadastro.html">Use a nossa plataforma.</a></p>
+                <input type="submit" id="loginBtn" value="Entrar">
+            </div>
+
+            <p id="mensagem" style="color: red; display: none;">Email ou senha inválidos!</p>
+            <p id="sucesso" style="color: green; display: none;">Login bem-sucedido!</p>
+        </div>
+    </div>
+
+    <script>
+        const usuarios = {
+            "ana.lima@gmail.com": "AnaLima123!",
+            "carlos.souza@gmail.com": "CarlosSouza456!",
+            "fernanda.pereira@gmail.com": "FernandaP789!",
+            "lucas.alves@gmail.com": "LucasAlves101!",
+            "beatriz.rodrigues@gmail.com": "BeatrizR202!",
+            "ricardo.costa@gmail.com": "RicardoC303!",
+            "juliana.martins@gmail.com": "JulianaM404!",
+            "pedro.oliveira@gmail.com": "PedroO505!",
+            "aline.santos@gmail.com": "AlineS606!",
+            "mariana.ferreira@gmail.com": "MarianaF707!",
+            "gabriel.ramos@gmail.com": "GabrielR808!",
+            "leticia.silva@gmail.com": "LeticiaS909!",
+            "rodrigo.lima@gmail.com": "RodrigoL010!",
+            "sofia.mendes@gmail.com": "SofiaM111!",
+            "daniel.barros@gmail.com": "DanielB212!",
+            "laura.cavalcante@gmail.com": "LauraC313!",
+            "vinicius.gomes@gmail.com": "ViniciusG414!",
+            "renata.pires@gmail.com": "RenataP515!",
+            "felipe.dias@gmail.com": "FelipeD616!"
+        };
+
+        const loginBtn = document.getElementById('loginBtn');
+        const emailInput = document.getElementById('email');
+        const senhaInput = document.getElementById('senha');
+        const mensagem = document.getElementById('mensagem');
+        const sucesso = document.getElementById('sucesso');
+        const togglePassword = document.getElementById('togglePassword');
+
+        // Função para mostrar ou ocultar a senha
+        togglePassword.addEventListener('click', function () {
+            const type = senhaInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            senhaInput.setAttribute('type', type);
+        });
+
+        // Validação do login
+        loginBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const email = emailInput.value;
+            const senha = senhaInput.value;
+
+            if (usuarios[email] && usuarios[email] === senha) {
+                mensagem.style.display = 'none';
+                sucesso.style.display = 'block';
+
+                // Redireciona para a página de sucesso
+                setTimeout(() => {
+                    window.location.href = 'pagina_de_sucesso.html'; // Alterar para a sua página de sucesso
+                }, 1000);
+            } else {
+                sucesso.style.display = 'none';
+                mensagem.style.display = 'block';
+            }
+        });
+    </script>
+
+</body>
+</html>
